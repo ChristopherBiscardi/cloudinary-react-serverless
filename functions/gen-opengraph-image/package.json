@@ -6,7 +6,6 @@
   "license": "MIT",
   "dependencies": {
     "playwright-aws-lambda": "^0.4.0",
-    "playwright-chromium": "0.11.1",
     "playwright-core": "^0.11.1"
   }
 }
