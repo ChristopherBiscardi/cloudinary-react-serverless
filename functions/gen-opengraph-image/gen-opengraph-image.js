@@ -1,6 +1,6 @@
 const playwright = require("playwright");
 
-exports.handler = async function(event, context) {
+exports.handler = async function(event, ctx) {
   const browser = await playwright.chromium.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
