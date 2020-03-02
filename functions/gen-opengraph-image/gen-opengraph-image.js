@@ -1,4 +1,4 @@
-const playwright = require("playwright");
+const playwright = require("playwright-chromium");
 
 exports.handler = async function(event, ctx) {
   const browser = await playwright.chromium.launch();
