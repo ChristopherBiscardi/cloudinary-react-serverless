@@ -14,6 +14,6 @@ exports.handler = async function(event, ctx) {
     headers: {
       "Content-Type": "image/png"
     },
-    body: screenshotBuffer
+    body: screenshotBuffer.toString("base64")
   };
 };
