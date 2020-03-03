@@ -8,5 +8,8 @@ exports.handler = async function(event, ctx) {
   const screenshotBuffer = await page.screenshot();
   await browser.close();
   console.log(screenshotBuffer);
-  return "screenshotBuffer";
+  return {
+    statusCode: 200,
+    body: screenshotBuffer
+  };
 };
