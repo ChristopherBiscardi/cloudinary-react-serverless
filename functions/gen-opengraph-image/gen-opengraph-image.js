@@ -10,6 +10,6 @@ exports.handler = async function(event, ctx) {
   console.log(screenshotBuffer);
   return {
     statusCode: 200,
-    body: "screenshotBuffer"
+    body: screenshotBuffer.toString()
   };
 };
