@@ -10,6 +10,6 @@ exports.handler = async function(event, ctx) {
   console.log(screenshotBuffer);
   return {
     statusCode: 200,
-    body: screenshotBuffer.toString()
+    body: screenshotBuffer.toString("base64")
   };
 };
