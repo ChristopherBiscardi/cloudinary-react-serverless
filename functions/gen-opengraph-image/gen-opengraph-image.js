@@ -7,9 +7,13 @@ exports.handler = async function(event, ctx) {
   await page.goto("http://whatsmyuseragent.org/");
   const screenshotBuffer = await page.screenshot();
   await browser.close();
-  console.log(screenshotBuffer);
+  // console.log(screenshotBuffer);
   return {
+    isBase64Encoded: true,
     statusCode: 200,
-    body: screenshotBuffer.toString("base64")
+    headers: {
+      "Content-Type": "image/png"
+    },
+    body: screenshotBuffer
   };
 };
