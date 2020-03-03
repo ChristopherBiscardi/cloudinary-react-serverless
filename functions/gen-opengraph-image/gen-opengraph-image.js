@@ -7,5 +7,6 @@ exports.handler = async function(event, ctx) {
   await page.goto("http://whatsmyuseragent.org/");
   const screenshotBuffer = await page.screenshot();
   await browser.close();
-  return screenshotBuffer;
+  console.log(screenshotBuffer);
+  return "screenshotBuffer";
 };
