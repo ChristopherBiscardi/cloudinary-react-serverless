@@ -19,9 +19,9 @@ exports.handler = async function(event, ctx) {
     </body>
   </html>
   `);
-  console.log("event", JSON.stringify(event, null, 2));
+  console.log("event", JSON.stringify(event.queryStringParameters, null, 2));
   const { queryStringParameters } = event;
-  const tags = queryStringParameters.tags.split(", ");
+  const tags = queryStringParameters.tags ? queryStringParameters.tags.split(", ") || [];
   await page.addScriptTag({
     content: `
   window.title = "${queryStringParameters.title || "No Title"}";
@@ -31,8 +31,11 @@ exports.handler = async function(event, ctx) {
   await page.addScriptTag({ content: script });
   const boundingRect = page.evaluate(() => {
     const corgi = document.getElementById("corgi");
-    return corgi.getBoundingClientRect();
+    const corgiSize = corgi.getBoundingClientRect();
+    console.log(corgiSize);
+    return corgiSize
   });
+  console.log(boundingRect)
   const screenshotBuffer = await page.screenshot({ clip: boundingRect });
   await browser.close();
   // console.log(screenshotBuffer);
