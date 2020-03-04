@@ -19,6 +19,8 @@ exports.handler = async function(event, ctx) {
     </body>
   </html>
   `);
+  console.log("script next");
+  console.log(script);
   await page.addScriptTag({ content: script });
   const screenshotBuffer = await page.screenshot();
   await browser.close();
