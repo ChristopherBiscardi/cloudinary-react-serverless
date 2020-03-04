@@ -31,10 +31,9 @@ exports.handler = async function(event, ctx) {
 `
   });
   await page.addScriptTag({ content: script });
-  const boundingRect = page.evaluate(() => {
+  const boundingRect = await page.evaluate(() => {
     const corgi = document.getElementById("corgi");
     const corgiSize = corgi.getBoundingClientRect();
-    console.log(corgiSize);
     return corgiSize;
   });
   console.log(boundingRect);
