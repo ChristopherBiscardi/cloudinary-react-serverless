@@ -12,7 +12,7 @@ function App() {
         height: "512px",
         background: `url(${rainbow})`,
         backgroundSize: "cover",
-        position: "absolute",
+        // position: "absolute",
         display: "flex",
         overflow: "hidden"
       }}
@@ -86,9 +86,7 @@ function App() {
               }
             }}
           >
-            <li>react</li>
-            <li>snowpack</li>
-            <li>o11y</li>
+            {window.tags && window.tags.map(tag => <li>{tag}</li>)}
           </ul>
           <span
             css={{

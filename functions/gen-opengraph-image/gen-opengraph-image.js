@@ -20,9 +20,20 @@ exports.handler = async function(event, ctx) {
   </html>
   `);
   console.log("event", JSON.stringify(event, null, 2));
-  await page.addScriptTag({ content: "window.title = 'Hellza!' " });
+  const { queryStringParameters } = event;
+  const tags = queryStringParameters.tags.split(", ");
+  await page.addScriptTag({
+    content: `
+  window.title = "${queryStringParameters.title || "No Title"}";
+  window.tags = ${JSON.stringify(tags)}
+`
+  });
   await page.addScriptTag({ content: script });
-  const screenshotBuffer = await page.screenshot();
+  const boundingRect = page.evaluate(() => {
+    const corgi = document.getElementById("corgi");
+    return corgi.getBoundingClientRect();
+  });
+  const screenshotBuffer = await page.screenshot({ clip: boundingRect });
   await browser.close();
   // console.log(screenshotBuffer);
   return {

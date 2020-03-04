@@ -10179,7 +10179,7 @@
 	        }
 	      }
 	    }
-	  }, jsx("li", null, "react"), jsx("li", null, "snowpack"), jsx("li", null, "o11y")), jsx("span", {
+	  }, window.tags && window.tags.map(tag => jsx("li", null, tag))), jsx("span", {
 	    css: {
 	      color: "#E4E6E6"
 	    }
