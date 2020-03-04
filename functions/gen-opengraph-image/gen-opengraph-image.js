@@ -1,6 +1,6 @@
 const playwright = require("playwright-aws-lambda");
 const fs = require("fs");
-const script = fs.readFileSync("./dist/bundle-a.js");
+const script = fs.readFileSync("./dist/bundle-a.js", "utf-8");
 
 exports.handler = async function(event, ctx) {
   const browser = await playwright.launchChromium();
