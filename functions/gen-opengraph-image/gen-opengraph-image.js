@@ -33,8 +33,8 @@ exports.handler = async function(event, ctx) {
   await page.addScriptTag({ content: script });
   const boundingRect = await page.evaluate(() => {
     const corgi = document.getElementById("corgi");
-    const corgiSize = corgi.getBoundingClientRect();
-    return corgiSize;
+    const { x, y, width, height } = corgi.getBoundingClientRect();
+    return { x, y, width, height };
   });
   console.log(boundingRect);
   const screenshotBuffer = await page.screenshot({ clip: boundingRect });
