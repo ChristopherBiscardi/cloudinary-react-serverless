@@ -21,11 +21,13 @@ exports.handler = async function(event, ctx) {
   `);
   console.log("event", JSON.stringify(event.queryStringParameters, null, 2));
   const { queryStringParameters } = event;
-  const tags = queryStringParameters.tags ? queryStringParameters.tags.split(", ") || [];
+  const tags = queryStringParameters.tags
+    ? queryStringParameters.tags.split(", ")
+    : [];
   await page.addScriptTag({
     content: `
   window.title = "${queryStringParameters.title || "No Title"}";
-  window.tags = ${JSON.stringify(tags)}
+  window.tags = ${JSON.stringify(tags)};
 `
   });
   await page.addScriptTag({ content: script });
@@ -33,9 +35,9 @@ exports.handler = async function(event, ctx) {
     const corgi = document.getElementById("corgi");
     const corgiSize = corgi.getBoundingClientRect();
     console.log(corgiSize);
-    return corgiSize
+    return corgiSize;
   });
-  console.log(boundingRect)
+  console.log(boundingRect);
   const screenshotBuffer = await page.screenshot({ clip: boundingRect });
   await browser.close();
   // console.log(screenshotBuffer);
