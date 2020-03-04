@@ -10186,6 +10186,6 @@
 	  }, "Chris Biscardi"))));
 	}
 
-	reactDom_6(jsx(App, null), document.body);
+	reactDom_6(jsx(App, null), document.getElementById("corgi"));
 
 }());

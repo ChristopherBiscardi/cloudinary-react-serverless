@@ -103,4 +103,4 @@ function App() {
   );
 }
 
-render(<App />, document.body);
+render(<App />, document.getElementById("corgi"));
