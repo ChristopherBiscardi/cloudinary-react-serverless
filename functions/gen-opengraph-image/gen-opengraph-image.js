@@ -1,10 +1,12 @@
 const playwright = require("playwright-aws-lambda");
+const fs = require("fs");
+const script = fs.readFileSync("./dist/bundle-a.js");
 
 exports.handler = async function(event, ctx) {
   const browser = await playwright.launchChromium();
   const context = await browser._defaultContext;
   const page = await context.newPage();
-  await page.goto("http://whatsmyuseragent.org/");
+  await page.addScriptTag({ content: script });
   const screenshotBuffer = await page.screenshot();
   await browser.close();
   // console.log(screenshotBuffer);
@@ -12,7 +14,8 @@ exports.handler = async function(event, ctx) {
     isBase64Encoded: true,
     statusCode: 200,
     headers: {
-      "Content-Type": "image/png"
+      "Content-Type": "image/png",
+      "Content-Length": screenshotBuffer.length
     },
     body: screenshotBuffer.toString("base64")
   };
