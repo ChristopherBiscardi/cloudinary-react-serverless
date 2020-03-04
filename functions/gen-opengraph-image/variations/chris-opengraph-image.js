@@ -12,7 +12,7 @@ function App() {
         height: "512px",
         background: `url(${rainbow})`,
         backgroundSize: "cover",
-        // position: "absolute",
+        position: "inherit",
         display: "flex",
         overflow: "hidden"
       }}

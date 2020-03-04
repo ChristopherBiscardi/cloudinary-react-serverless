@@ -10109,7 +10109,7 @@
 	      height: "512px",
 	      background: `url(${img})`,
 	      backgroundSize: "cover",
-	      position: "absolute",
+	      position: "inherit",
 	      display: "flex",
 	      overflow: "hidden"
 	    }
