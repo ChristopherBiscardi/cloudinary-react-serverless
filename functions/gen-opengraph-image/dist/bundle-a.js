@@ -10149,7 +10149,7 @@
 	      fontSize: 48,
 	      maxWidth: "60%"
 	    }
-	  }, "Rendering Trees with SlateJS"), jsx("hr", {
+	  }, window.title), jsx("hr", {
 	    css: {
 	      backgroundImage: `url(${img})`,
 	      height: 11,

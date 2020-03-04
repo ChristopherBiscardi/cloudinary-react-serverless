@@ -19,8 +19,8 @@ exports.handler = async function(event, ctx) {
     </body>
   </html>
   `);
-  console.log("script next");
-  console.log(script);
+  console.log("event", JSON.stringify(event, null, 2));
+  await page.addScriptTag({ content: "window.title = 'Hellza!' " });
   await page.addScriptTag({ content: script });
   const screenshotBuffer = await page.screenshot();
   await browser.close();

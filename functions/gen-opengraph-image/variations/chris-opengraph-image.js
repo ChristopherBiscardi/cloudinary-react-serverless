@@ -56,7 +56,7 @@ function App() {
             maxWidth: "60%"
           }}
         >
-          Rendering Trees with SlateJS
+          {window.title}
         </h1>
         <hr
           css={{
