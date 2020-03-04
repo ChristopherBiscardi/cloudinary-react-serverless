@@ -6,7 +6,7 @@ exports.handler = async function(event, ctx) {
   const browser = await playwright.launchChromium();
   const context = await browser._defaultContext;
   const page = await context.newPage();
-  await page.addScriptTag({ content: script });
+  await page.addScriptTag({ content: "document.body.innerHTML = 'testing'" });
   const screenshotBuffer = await page.screenshot();
   await browser.close();
   // console.log(screenshotBuffer);
