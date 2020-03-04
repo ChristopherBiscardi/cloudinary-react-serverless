@@ -6,10 +6,10 @@ exports.handler = async function(event, ctx) {
   const browser = await playwright.launchChromium();
   const context = await browser._defaultContext;
   const page = await context.newPage();
-  page.setViewportSize({
-    width: 1920,
-    height: 1080
-  });
+  // page.setViewportSize({
+  //   width: 1920,
+  //   height: 1080
+  // });
   await page.setContent(`<!DOCTYPE html>
   <html>
     <head>
@@ -37,7 +37,7 @@ exports.handler = async function(event, ctx) {
   await page.addScriptTag({ content: script });
   const boundingRect = await page.evaluate(() => {
     const corgi = document.getElementById("corgi");
-    const { x, y, width, height } = corgi.getBoundingClientRect();
+    const { x, y, width, height } = corgi.children[0].getBoundingClientRect();
     return { x, y, width, height };
   });
   console.log(boundingRect);
