@@ -49,7 +49,7 @@ exports.handler = async function(event, ctx) {
     statusCode: 200,
     headers: {
       "Content-Type": "image/png",
-      "Content-Length": screenshotBuffer.length
+      "Content-Length": screenshotBuffer.length.toString()
     },
     body: screenshotBuffer.toString("base64")
   };
