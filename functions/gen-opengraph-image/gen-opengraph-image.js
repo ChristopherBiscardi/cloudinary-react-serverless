@@ -1,8 +1,11 @@
 const playwright = require("playwright-aws-lambda");
+const multipart = require("aws-lambda-multipart-parser");
 const fs = require("fs");
 const script = fs.readFileSync("./dist/bundle-a.js", "utf-8");
 
 exports.handler = async function(event, ctx) {
+  const parsedRequest = multipart.parse(event, false);
+
   const browser = await playwright.launchChromium();
   const context = await browser._defaultContext;
   const page = await context.newPage();
@@ -24,6 +27,7 @@ exports.handler = async function(event, ctx) {
   </html>
   `);
   console.log("event", JSON.stringify(event, null, 2));
+  console.log("ctx", JSON.stringify(ctx, null, 2));
   const { queryStringParameters } = event;
   const tags = queryStringParameters.tags
     ? queryStringParameters.tags.split(", ")
