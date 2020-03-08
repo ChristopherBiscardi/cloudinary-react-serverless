@@ -23,7 +23,7 @@ exports.handler = async function(event, ctx) {
     </body>
   </html>
   `);
-  console.log("event", JSON.stringify(event.queryStringParameters, null, 2));
+  console.log("event", JSON.stringify(event, null, 2));
   const { queryStringParameters } = event;
   const tags = queryStringParameters.tags
     ? queryStringParameters.tags.split(", ")
@@ -40,7 +40,7 @@ exports.handler = async function(event, ctx) {
     const { x, y, width, height } = corgi.children[0].getBoundingClientRect();
     return { x, y, width, height };
   });
-  console.log(boundingRect);
+
   const screenshotBuffer = await page.screenshot({ clip: boundingRect });
   await browser.close();
   // console.log(screenshotBuffer);
