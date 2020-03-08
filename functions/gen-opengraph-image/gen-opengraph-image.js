@@ -5,7 +5,7 @@ const script = fs.readFileSync("./dist/bundle-a.js", "utf-8");
 
 exports.handler = async function(event, ctx) {
   const parsedRequest = multipart.parse(event, false);
-
+  console.log("parsed", parsedRequest);
   const browser = await playwright.launchChromium();
   const context = await browser._defaultContext;
   const page = await context.newPage();
